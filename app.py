@@ -2,9 +2,9 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 from threading import Thread
 import time
-import random
 
 # from sensor.sensor import Sensor
+import random
 
 # initalize the flask app, socketio server, and the emg sensor
 app = Flask(__name__)
@@ -15,11 +15,12 @@ def emit_data():
     '''Emit data caputured by the sensor to the frontend through websockets'''
     while True: 
         try: 
-            # muscle_activity = emg_sensor.read_activity()
-            socketio.emit('emg_data', random.randint(0,10))
-            time.sleep(0.1)
+            val = random.randint(1, 10)
+            # muscle_activity = emg_sensor.read_muscle_data()
+            socketio.emit("emg_data", val)
+            time.sleep(0.02) # read at 50 Hz
         except Exception as e:
-            print(f"Error while reading data: {e}")
+            print(f"Error reading data: {e}")
             break
 
 @app.route('/')
@@ -49,5 +50,6 @@ if __name__ == '__main__':
     try:
         socketio.run(app, debug=True, port=5000)
     finally:
+        # Stop the pigpio daemon
         # emg_sensor.close()
         pass

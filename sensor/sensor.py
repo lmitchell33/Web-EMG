@@ -11,8 +11,7 @@ class Sensor:
 
     The pigpio library was used because it uses hardware timed sampling rather than
     software based timing. This allows for slightly more precise timing and sampling
-    intervals. The library also runs as a background process which is important becuase
-    the web app and sensor are running on the same machine. 
+    intervals while also providing less processing overhead. 
     '''
 
     def __init__(self, pin):
@@ -24,11 +23,13 @@ class Sensor:
         '''
 
         self.pin = pin
-
         self.rpi = pigpio.pi()
+
+        # Ensure the daemon is running
         if not self.rpi.connected:
             raise Exception("Failed to connect to GPIO pins")
         
+        # set the pin to only intake voltage 
         self.rpi.set_mode(self.pin, pigpio.INPUT)
         
 
@@ -37,7 +38,7 @@ class Sensor:
         Returns:
             pigpio.read {int} -- The value read from the sensor
         '''
-        return self.rpi.read(self.pin)
+        return self.rpi.read(self.pin) * 1024
     
 
     def close(self):
@@ -54,8 +55,7 @@ if __name__ == "__main__":
             print(f"Muscle activity: {muscle_activity}")
             time.sleep(0.02) # read at 50 Hz
     except KeyboardInterrupt:
-        # just to ensure the sensor is properly disconnected
-        pass
+        print("Closing sensor and stopping the pigpio daemon...")
     finally:
         sensor.close()
 
