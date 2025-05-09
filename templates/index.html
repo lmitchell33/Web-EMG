@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMG Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="dark-mode-toggle" id="darkModeToggle">Dark Mode</button>
+    <div class="container">
+        <div class="header">
+            <h1>EMG Muscle Monitor</h1>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="emgChart"></canvas>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-value" id="peakValue">0</div>
+                <div class="stat-label">Peak Value (%) </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="averageValue">0</div>
+                <div class="stat-label">Average Value (%)</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+This was primarily AI-generated
+
+/* Base styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f7f8fa, #eaeef3);
+    color: #333;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styling */
+body.dark-mode {
+    background: linear-gradient(135deg, #121212, #1e1e1e);
+    color: #f0f0f0;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .container {
+    background: #222;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2b6cb0;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .header h1 {
+    color: #90cdf4;
+}
+
+#connectionStatus {
+    margin-top: 10px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1em;
+    display: inline-block;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.connected {
+    background: #68d391;
+    color: #ffffff;
+}
+
+.disconnected {
+    background: #f56565;
+    color: #ffffff;
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f7f8fa;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .chart-container {
+    background: #1a1a1a;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Stats */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #ffffff, #eaeef3);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+body.dark-mode .stat-card {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-value {
+    font-size: 3em;
+    font-weight: bold;
+    color: #2b6cb0;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .stat-value {
+    color: #90cdf4;
+}
+
+.stat-label {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #718096;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .stat-label {
+    color: #a0aec0;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle {
+    background: #90cdf4;
+    color: #2d3748;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .header h1 {
+        font-size: 1.8em;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 2.5em;
+    }
+}
